@@ -21,15 +21,15 @@ namespace CubeRenderer
             0.5f, -0.5f, -0.5f, 0, 0, 1,
             -0.5f, -0.5f, -0.5f, 0, 0, 1,
 
-            0.5f, 0.5f, -0.5f, 1, 0, 0,
-            0.5f, 0.5f, 0.5f, 1, 0, 0,
-            0.5f, -0.5f, 0.5f, 1, 0, 0,
-            0.5f, -0.5f, -0.5f, 1, 0, 0,
+            0.5f, 0.5f, -0.5f, -1, 0, 0,
+            0.5f, 0.5f, 0.5f, -1, 0, 0,
+            0.5f, -0.5f, 0.5f, -1, 0, 0,
+            0.5f, -0.5f, -0.5f, -1, 0, 0,
 
-            -0.5f, 0.5f, -0.5f, -1, 0, 0,
-            -0.5f, 0.5f, 0.5f, -1, 0, 0,
-            -0.5f, -0.5f, 0.5f, -1, 0, 0,
-            -0.5f, -0.5f, -0.5f, -1, 0, 0,
+            -0.5f, 0.5f, -0.5f, 1, 0, 0,
+            -0.5f, 0.5f, 0.5f, 1, 0, 0,
+            -0.5f, -0.5f, 0.5f, 1, 0, 0,
+            -0.5f, -0.5f, -0.5f, 1, 0, 0,
 
             -0.5f, 0.5f, 0.5f, 0, 0, -1,
             0.5f, 0.5f, 0.5f, 0, 0, -1,
@@ -105,6 +105,7 @@ namespace CubeRenderer
             Matrix4 timeRotation = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(DateTime.Now.Ticks / 100000 % 360));
             Matrix4 transform = scale * rotation * timeRotation;
             shader.SetMatrix("transform", transform);
+            shader.SetMatrix("timeRotation", timeRotation);
 
             GL.BindVertexArray(VertexArrayObject);
             GL.DrawElements(PrimitiveType.Triangles, indices.Length, DrawElementsType.UnsignedInt, 0);
