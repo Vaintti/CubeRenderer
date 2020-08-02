@@ -105,6 +105,8 @@ namespace CubeRenderer
 
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             GL.DeleteBuffer(VertexBufferObject);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
+            GL.DeleteBuffer(ElementBufferObject);
 
             base.OnUnload(e);
         }
